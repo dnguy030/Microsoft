@@ -1,0 +1,28 @@
+Algorithm : SHA256
+Hash      : 366F4D74407C5E50E098FFA275E8D870DCAAD70E3376653785A080016C98ADF3
+Path      : ProjectProRetail.img
+http://officecdn.microsoft.com.edgesuite.net/db/492350F6-3A01-4F97-B9C0-C7C6DDF67D60/media/en-us/ProjectProRetail.img
+KMS key   : YG9NW-3K39V-2T3HJ-93F3Q-G83KT
+
+Algorithm : SHA256
+Hash      : 67EA3C84E2D26DBDD1C3F72FB774F6DC72701DC2F96F19CBA0B70880A3B856E9
+Path      : ProPlusRetail.img
+http://officecdn.microsoft.com/db/492350F6-3A01-4F97-B9C0-C7C6DDF67D60/media/en-us/ProPlusRetail.img
+KMS key   : XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
+
+Algorithm : SHA256
+Hash      : 798E010ED4471523EC48547C170D262E1A0329486FF159256F1EF3B7E2B04146
+Path      : VisioProRetail.img
+http://officecdn.microsoft.com.edgesuite.net/db/492350F6-3A01-4F97-B9C0-C7C6DDF67D60/media/en-us/VisioProRetail.img
+KMS key   : PD3PC-RHNGV-FXJ29-8JK7D-RJRJK
+
+#1
+Download and verify the img files.
+
+#2
+Use 7-Zip to extract the contents of the img files.
+
+#3
+Install.
+
+#4
