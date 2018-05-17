@@ -1,0 +1,8 @@
+#Offline install of Visual Studio 2017 Enterprise
+
+#Download the Visual Studio Enterprise bootstrapper
+https://aka.ms/vs/15/release/vs_enterprise.exe
+
+#Create a local install cache
+#Create a complete local layout with all features
+vs_Enterprise.exe --layout .\vs2017offline --lang en-US
