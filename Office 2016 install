@@ -26,3 +26,35 @@ Use 7-Zip to extract the contents of the img files.
 Install.
 
 #4
+Convert Retail to Volume License
+
+slmgr /ilc "%ProgramFiles%\Microsoft Office\root\Licenses16\ProPlusVL_KMS_Client-ppd.xrm-ms"
+slmgr /ilc "%ProgramFiles%\Microsoft Office\root\Licenses16\ProPlusVL_KMS_Client-ul.xrm-ms"
+slmgr /ilc "%ProgramFiles%\Microsoft Office\root\Licenses16\ProPlusVL_KMS_Client-ul-oob.xrm-ms"
+
+slmgr.vbs /ilc "%ProgramFiles%\Microsoft Office\root\Licenses16\ProjectProVL_KMS_Client-ppd.xrm-ms"
+slmgr.vbs /ilc "%ProgramFiles%\Microsoft Office\root\Licenses16\ProjectProVL_KMS_Client-ul-oob.xrm-ms"
+slmgr.vbs /ilc "%ProgramFiles%\Microsoft Office\root\Licenses16\ProjectProVL_KMS_Client-ul.xrm-ms"
+
+slmgr.vbs /ilc "%ProgramFiles%\Microsoft Office\root\Licenses16\VisioProVL_KMS_Client-ppd.xrm-ms"
+slmgr.vbs /ilc "%ProgramFiles%\Microsoft Office\root\Licenses16\VisioProVL_KMS_Client-ul-oob.xrm-ms"
+slmgr.vbs /ilc "%ProgramFiles%\Microsoft Office\root\Licenses16\VisioProVL_KMS_Client-ul.xrm-ms"
+
+slmgr.vbs /ilc "%ProgramFiles%\Microsoft Office\root\Licenses16\client-issuance-bridge-office.xrm-ms
+slmgr.vbs /ilc "%ProgramFiles%\Microsoft Office\root\Licenses16\client-issuance-root.xrm-ms
+slmgr.vbs /ilc "%ProgramFiles%\Microsoft Office\root\Licenses16\client-issuance-root-bridge-test.xrm-ms
+slmgr.vbs /ilc "%ProgramFiles%\Microsoft Office\root\Licenses16\client-issuance-stil.xrm-ms
+slmgr.vbs /ilc "%ProgramFiles%\Microsoft Office\root\Licenses16\client-issuance-ul.xrm-ms
+slmgr.vbs /ilc "%ProgramFiles%\Microsoft Office\root\Licenses16\client-issuance-ul-oob.xrm-ms
+slmgr.vbs /ilc "%ProgramFiles%\Microsoft Office\root\Licenses16\pkeyconfig-office.xrm-ms
+
+#5
+Install KMS Keys
+
+cd "C:\Program Files\Microsoft Office\Office16"
+cscript OSPP.VBS /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
+cscript OSPP.VBS /inpkey:PD3PC-RHNGV-FXJ29-8JK7D-RJRJK
+cscript OSPP.VBS /inpkey:YG9NW-3K39V-2T3HJ-93F3Q-G83KT
+
+#6
+Activate
