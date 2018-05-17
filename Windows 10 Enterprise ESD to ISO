@@ -1,0 +1,46 @@
+Windows 10 Enterprise ESD to ISO using Media Creation Tool
+
+#1 Download Products_RS4_04_20_2018.xml
+https://download.microsoft.com/download/F/1/2/F12AE2F0-B1CC-4A83-9529-C3D43F171C62/Products_RS4_04_20_2018.xml
+
+#2 Rename Products_RS4_04_20_2018.xml to products.xml
+
+#3a Open products.xml and insert the following before <PublishedMedia id="2012" release="RS4_RTM 17134 April 2018">
+<MCT>
+ <Catalogs>
+   <Catalog version="1.1">
+   
+#3b Insert the following after </PublishedMedia>
+   </Catalog>
+ </Catalogs>
+</MCT>
+
+#4 Create the products.cab file from products.xml 
+makecab products.xml products.cab
+
+#5 Download the Media Creation Tool and make sure it is in the same location as products.cab
+
+#6 Run the Media Creation Tool in the console with the following options
+/Console /Retail /MediaLangCode en-us /MediaArch x64  /MediaEdition Enterprise
+
+#7 When prompted enter in the KMS key for Windows 10 Enterprise
+NPPR9-FWDCX-D2C8J-H872K-2YT43
+
+
+#Reference
+http://fg.ds.b1.download.windowsupdate.com/c/Upgr/2018/04/17134.1.180410-1804.rs4_release_clientbusiness_vol_x64fre_en-us_3322a5ade9e29f74a61fd750614a939239780fee.esd
+
+<File>
+    <FileName>17134.1.180410-1804.rs4_release_CLIENTBUSINESS_VOL_x64FRE_en-us.esd</FileName>
+    <LanguageCode>en-us</LanguageCode>
+    <Language>English</Language>
+    <Edition>Enterprise</Edition>
+    <Architecture>x64</Architecture>
+    <Size>3051638710</Size>
+    <Sha1>3322a5ade9e29f74a61fd750614a939239780fee</Sha1>
+    <FilePath>http://fg.ds.b1.download.windowsupdate.com/c/Upgr/2018/04/17134.1.180410-1804.rs4_release_clientbusiness_vol_x64fre_en-us_3322a5ade9e29f74a61fd750614a939239780fee.esd</FilePath>
+    <Key />
+    <Architecture_Loc>%ARCH_64%</Architecture_Loc>
+    <Edition_Loc>%ENTERPRISE%</Edition_Loc>
+    <IsRetailOnly>True</IsRetailOnly>
+</File>
