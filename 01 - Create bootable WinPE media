@@ -17,3 +17,6 @@ Create a bootable WinPE USB drive
 #Use MakeWinPEMedia with the /UFD option to format and install Windows PE to the USB flash drive, specifying the USB key's drive letter:
 MakeWinPEMedia /UFD C:\WinPE_amd64 P:
 #The bootable WinPE USB drive is ready.
+
+Source:
+https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/winpe-create-usb-bootable-drive
