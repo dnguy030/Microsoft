@@ -1,0 +1,31 @@
+Windows 10 image modification
+
+Convert an ESD File from the Windows 10 ISO to a WIM File
+#Change to the directory where the install.esd file is located.
+#Show the available images within the install.esd file.
+Dism /Get-WimInfo /WimFile:install.esd
+
+#Export the image to a WIM file.
+Dism /Export-Image /SourceImageFile:<path_to_Image_file> /SourceIndex:3 /DestinationImageFile:install.wim /Compress:none /CheckIntegrity
+
+#Use DISM to mount the image.
+Dism /Mount-Image /ImageFile:<path_to_Image_file> /index:1 /MountDir:<target_mount_directory>
+
+#Find available Windows features in an image
+Dism /Image:<path_to_image_directory> /Get-Features
+Dism /Image:<path_to_image_directory> /Get-FeatureInfo /FeatureName:<name_in_image>
+
+#Add a Windows update package to an image.
+#Grab the latest cumulative update listed in Windows 10 update history from the Microsoft Update catalog
+#http://www.catalog.update.microsoft.com/
+#Add the updates to a mounted image. For packages with dependencies, make sure you install the packages in order. If you’re not sure of the dependencies, it’s OK to put them all in the same folder, and then add them all using the same DISM /Add-Package command by adding multiple /PackagePath items.
+Dism /Image:<path_to_image_directory> /Add-Package /PackagePath=<path_to_package>
+
+#Lock in the updates, so that they are restored during a recovery.
+Dism /Image:<path_to_image_directory> /Cleanup-Image /StartComponentCleanup /ResetBase /ScratchDir:<path_to_scratchdirectory>
+
+#Verify that the packages appear correctly
+Dism /Image:<path_to_image_directory> /Get-Packages
+
+#Commit changes and unmount
+Dism /Unmount-Image /MountDir:<target_mount_directory> /Commit
