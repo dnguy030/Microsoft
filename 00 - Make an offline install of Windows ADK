@@ -1,14 +1,16 @@
-Make an offline install of Windows ADK
+Make an offline install of Windows ADK and PE
 
-#Download the Windows ADK
+#Download the Windows ADK and PE
 https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install
 
 #Open a Command Prompt window as administrator.
-#Change to the directory that stores the Adksetup.exe file.
+#Change to the directory that stores the adksetup.exe and adkwinpesetup.exe files.
 
 #Run and specify where the offline install files will be downloaded to.
 adksetup /layout
+adkwinpesetup /layout
 
 #Copy the downloaded files to a location that the offline computer can access.
 #Run the command below to install.
-adksetup /features OptionId.DeploymentTools OptionId.WindowsPreinstallationEnvironment
+adksetup /features OptionId.DeploymentTools /ceip off
+adkwinpesetup /ceip off
