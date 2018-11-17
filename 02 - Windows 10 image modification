@@ -28,4 +28,4 @@ Dism /Image:<path_to_image_directory> /Cleanup-Image /StartComponentCleanup /Res
 Dism /Image:<path_to_image_directory> /Get-Packages
 
 #Commit changes and unmount
-Dism /Unmount-Image /MountDir:<target_mount_directory> /Commit
+Dism /Unmount-Image /MountDir:<target_mount_directory> /Commit /CheckIntegrity
