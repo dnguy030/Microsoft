@@ -8,12 +8,22 @@ Dism /Get-WimInfo /WimFile:install.esd
 #Export the image to a WIM file.
 Dism /Export-Image /SourceImageFile:<path_to_Image_file> /SourceIndex:3 /DestinationImageFile:install.wim /Compress:none /CheckIntegrity
 
+#Get the index to mount
+Dism /Get-ImageInfo /ImageFile:<path_to_Image_file>
+
 #Use DISM to mount the image.
 Dism /Mount-Image /ImageFile:<path_to_Image_file> /index:1 /MountDir:<target_mount_directory>
 
 #Find available Windows features in an image
 Dism /Image:<path_to_image_directory> /Get-Features
 Dism /Image:<path_to_image_directory> /Get-FeatureInfo /FeatureName:<name_in_image>
+
+#Command to disable Windows features
+Dism /Image:windows10 /Disable-Feature /FeatureName:<FeatureName>
+
+#Commands to get and remove provisioned packages
+Get-AppxProvisionedPackage -Path <target_mount_directory>
+Remove-AppxProvisionedPackage -Path <target_mount_directory> -PackageName <PackageName>
 
 #Add a Windows update package to an image.
 #Grab the latest cumulative update listed in Windows 10 update history from the Microsoft Update catalog
@@ -22,6 +32,7 @@ Dism /Image:<path_to_image_directory> /Get-FeatureInfo /FeatureName:<name_in_ima
 Dism /Image:<path_to_image_directory> /Add-Package /PackagePath=<path_to_package>
 
 #Lock in the updates, so that they are restored during a recovery.
+Dism /Image:<path_to_image_directory> /Cleanup-Image /ScanHealth
 Dism /Image:<path_to_image_directory> /Cleanup-Image /StartComponentCleanup /ResetBase /ScratchDir:<path_to_scratchdirectory>
 
 #Verify that the packages appear correctly
