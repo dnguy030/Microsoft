@@ -1,0 +1,63 @@
+# Acquire 17763.253.190108-0006.rs5_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_en-us.esd
+http://dl.delivery.mp.microsoft.com/filestreamingservice/files/bac63291-8e30-4739-9194-f01fa9599efd/17763.253.190108-0006.rs5_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_en-us.esd
+
+# Verify that the SHA1 is 98effe32c0eeb9d3e904a9054dd627fbe2eeb791
+
+# Rename 17763.253.190108-0006.rs5_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_en-us.esd to windows10_1809.esd
+
+Dism /Get-WimInfo /WimFile:windows10_1809.esd
+
+Dism /Export-Image /SourceImageFile:windows10_1809.esd /SourceIndex:6 /DestinationImageFile:install.wim /Compress:none /CheckIntegrity
+
+Dism /Get-ImageInfo /ImageFile:install.wim
+
+Dism /Mount-Image /ImageFile:install.wim /index:1 /MountDir:windows10
+
+Dism /Image:windows10 /Get-Features
+
+Dism /Image:windows10 /Disable-Feature /FeatureName:Printing-XPSServices-Features
+Dism /Image:windows10 /Disable-Feature /FeatureName:FaxServicesClientPackage
+Dism /Image:windows10 /Disable-Feature /FeatureName:MicrosoftWindowsPowerShellV2Root
+Dism /Image:windows10 /Disable-Feature /FeatureName:MicrosoftWindowsPowerShellV2
+Dism /Image:windows10 /Disable-Feature /FeatureName:WorkFolders-Client
+
+Get-AppxProvisionedPackage -Path .\windows10\
+
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.BingWeather_4.25.12127.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.DesktopAppInstaller_2018.720.2137.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.GetHelp_10.1706.10441.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.Getstarted_6.13.11581.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.Messaging_2018.727.1430.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.Microsoft3DViewer_4.1808.15012.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.MicrosoftOfficeHub_2017.1219.520.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.MicrosoftSolitaireCollection_4.1.5252.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.MicrosoftStickyNotes_2.0.13.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.MixedReality.Portal_2000.18081.1242.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.Office.OneNote_16001.10228.20003.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.OneConnect_5.1807.1991.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.People_2018.516.2011.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.Print3D_3.0.1521.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.ScreenSketch_2018.731.48.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.SkypeApp_14.26.95.0_neutral_~_kzf8qxf38zg5c
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.Wallet_2.2.18179.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.windowsAlarms_2018.516.2059.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.windowsCamera_2018.425.120.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName microsoft.windowscommunicationsapps_2015.9330.21365.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.windowsFeedbackHub_2018.822.2.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.windowsMaps_2018.523.2143.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.windowsSoundRecorder_2018.713.2154.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.Xbox.TCUI_1.11.28003.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.XboxApp_41.41.18001.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.XboxGameOverlay_1.32.17005.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.XboxGamingOverlay_2.20.22001.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.XboxIdentityProvider_12.44.20001.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.XboxSpeechToTextOverlay_1.17.29001.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.YourPhone_2018.727.2137.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.ZuneMusic_2019.18052.20211.0_neutral_~_8wekyb3d8bbwe
+Remove-AppxProvisionedPackage -Path .\windows10\ -PackageName Microsoft.ZuneVideo_2019.18052.20211.0_neutral_~_8wekyb3d8bbwe
+
+Dism /Image:windows10 /Add-Package /PackagePath=windows10.0-kb4480056-x64_03a6d426797796ba712e4dbd05b56fd9cbfc2e24.msu
+
+Dism /Image:windows10 /Cleanup-Image /ScanHealth
+Dism /Image:windows10 /Cleanup-Image /StartComponentCleanup /ResetBase /ScratchDir:scratch
+Dism /Unmount-Image /MountDir:windows10 /Commit /CheckIntegrity
