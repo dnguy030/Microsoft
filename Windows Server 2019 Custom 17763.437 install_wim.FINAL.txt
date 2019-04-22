@@ -1,0 +1,44 @@
+Windows Server 2019 Custom 17763.437 install.wim
+
+#Acquire en_windows_server_2019_x64_dvd_4cb967d8.iso
+#SHA-1: 2047f4e9fe2894f138395f3fac037c007dd1493e
+#SHA-256: 4c5dd63efee50117986a2e38d4b3a3fbaf3c1c15e2e7ea1d23ef9d8af148dd2d
+
+#Extract install.wim from the ISO and rename it to server2019.wim
+#SHA-1: 6310B2D5AA7013107DB6DB1B9B93B8C32AAA0C1C
+#SHA-256: BD8E38E4868C6E4FFAF271E32F6154EE035B52582DC871A9F7E5B249A210E6C6
+
+#Create a folder named server2019
+#Create a folder named scratch
+
+Dism /Get-WimInfo /WimFile:server2019.wim
+
+#We're using index 4 for Windows Server 2019 Datacenter (Desktop Experience)
+Dism /Export-Image /SourceImageFile:server2019.wim /SourceIndex:4 /DestinationImageFile:install.wim /Compress:none /CheckIntegrity
+
+Dism /Get-ImageInfo /ImageFile:install.wim
+
+Dism /Mount-Image /ImageFile:install.wim /index:1 /MountDir:server2019
+
+Dism /Image:server2019 /Get-Features
+
+Dism /Image:server2019 /Disable-Feature /FeatureName:MicrosoftWindowsPowerShellV2
+Dism /Image:server2019 /Disable-Feature /FeatureName:Printing-XPSServices-Features
+
+Get-AppxProvisionedPackage -Path .\server2019
+
+Dism /Image:server2019 /Add-Package /PackagePath=windows10.0-kb4493510-x64_f692d391a4869d910c754895169dbd0d237a86da.msu
+Dism /Image:server2019 /Add-Package /PackagePath=windows10.0-kb4462930-x64_b22236a150c0fffaa1b132c7dfbbc844ad6c45e3.msu
+Dism /Image:server2019 /Add-Package /PackagePath=windows10.0-kb4483452-x64_2c65200d4b5b84db7d599738233e01875d64f976.msu
+Dism /Image:server2019 /Add-Package /PackagePath=windows10.0-kb4486553-x64_0c3111b07c3e2a33d66fed4a66c67dec989950a0.msu
+Dism /Image:server2019 /Add-Package /PackagePath=windows10.0-kb4493478-x64_49b9141862e0fcbcf4a022deb0ecce73c811478c.msu
+Dism /Image:server2019 /Add-Package /PackagePath=windows10.0-kb4480056-x64_03a6d426797796ba712e4dbd05b56fd9cbfc2e24.msu
+Dism /Image:server2019 /Add-Package /PackagePath=windows10.0-kb4493509-x64_ec069505eddfb9175e376b7eea773182d06033f0.msu
+
+Dism /Image:server2019 /Get-CurrentEdition
+
+Set-WindowsProductKey -Path .\server2019\ -ProductKey "WMDGN-G9PQG-XVVXX-R3X43-63DFG"
+
+Dism /Image:server2019 /Cleanup-Image /ScanHealth
+Dism /Image:server2019 /Cleanup-Image /StartComponentCleanup /ResetBase /ScratchDir:scratch
+Dism /Unmount-Image /MountDir:server2019 /Commit /CheckIntegrity
