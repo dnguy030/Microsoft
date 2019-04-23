@@ -1,0 +1,23 @@
+#Download the Visual Studio bootstrapper
+https://visualstudio.microsoft.com/downloads/
+
+#Create an offline installation folder
+vs_enterprise.exe --layout Z:\vs2019offline --lang en-US
+
+#Go to the offline installation folder and install using
+vs_enterprise.exe --productKey XXXXX-XXXXX-XXXXX-XXXXX-RC4DF
+
+#Apply the license after installation (if it wasn't applied during installation)
+cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE"
+StorePID.exe XXXXX-XXXXX-XXXXX-XXXXX-RC4DF 09260
+
+
+#Sources:
+#Create an offline installation of Visual Studio
+https://docs.microsoft.com/en-us/visualstudio/install/create-an-offline-installation-of-visual-studio?view=vs-2019
+
+#Create a network installation of Visual Studio
+https://docs.microsoft.com/en-us/visualstudio/install/create-a-network-installation-of-visual-studio?view=vs-2019
+
+#Automatically apply product keys when deploying Visual Studio
+https://docs.microsoft.com/en-us/visualstudio/install/automatically-apply-product-keys-when-deploying-visual-studio?view=vs-2019
