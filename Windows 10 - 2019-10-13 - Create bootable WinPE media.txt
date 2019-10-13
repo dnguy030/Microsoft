@@ -1,0 +1,45 @@
+Create bootable WinPE media
+
+#Create working files.
+#Start the Deployment and Imaging Tools Environment as an administrator.
+#Run copype to create a working copy of the Windows PE files.
+copype amd64 C:\WinPE_amd64
+
+
+#Customize WinPE (optional)
+#Use DISM to mount the WinPE image into a temporary location on your technician PC:
+Dism /Mount-Image /ImageFile:"C:\WinPE_amd64\media\sources\boot.wim" /index:1 /MountDir:"C:\WinPE_amd64\mount"
+
+#Set the power scheme to high performance
+#In Notepad, edit the file: C:\WinPE_amd64\mount\windows\system32\startnet.cmd, adding a command to set the power scheme to High Performance.
+wpeinit
+powercfg /s 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
+
+#Add updates to WinPE (if needed)
+#Download the latest update.
+#Apply the update to your mounted WinPE image.
+Dism /Add-Package /Image:"C:\WinPE_amd64\mount" /PackagePath:<path_to_update>
+#Lock in the update:
+#Create the scratch directory temp
+Dism /Image:"C:\WinPE_amd64\mount" /Cleanup-Image /StartComponentCleanup /ResetBase /ScratchDir:"C:\temp"
+
+#Unmount the WinPE image, committing changes.
+Dism /Unmount-Image /MountDir:"C:\WinPE_amd64\mount" /Commit /CheckIntegrity
+
+
+#Create a WinPE ISO, DVD, or CD
+#Use MakeWinPEMedia with the /ISO option to create an ISO file containing the Windows PE files:
+MakeWinPEMedia /ISO C:\WinPE_amd64 C:\WinPE_amd64\WinPE_amd64.iso
+
+
+#Create a bootable WinPE USB drive
+#Attach a USB drive.
+#Start the Deployment and Imaging Tools Environment as an administrator.
+#Use MakeWinPEMedia with the /UFD option to format and install Windows PE to the USB flash drive, specifying the USB key's drive letter:
+MakeWinPEMedia /UFD C:\WinPE_amd64 P:
+
+#The bootable WinPE USB drive is ready.
+
+
+#Source:
+https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/winpe-create-usb-bootable-drive

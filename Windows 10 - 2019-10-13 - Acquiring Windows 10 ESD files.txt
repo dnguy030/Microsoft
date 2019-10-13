@@ -1,0 +1,18 @@
+Acquiring Windows 10 ESD files
+
+#Download products_YYYYMMDD.cab file
+https://go.microsoft.com/fwlink/?LinkId=841361
+
+#Extract products.xml and open in a text editor
+
+#For Windows 10 Enterprise, find the download link in <FilePath> by searching for
+CLIENTBUSINESS_VOL_x64FRE_en-us
+CLIENTBUSINESS_VOL_x86FRE_en-us
+
+#For the client consumer retail version, find the download link in <FilePath> by searching for
+CLIENTCONSUMER_RET_x64FRE_en-us
+CLIENTCONSUMER_RET_x86FRE_en-us
+CLIENTCONSUMER_RET_A64FRE_en-us
+
+#Run the following command in Powershell to verify the SHA-1
+Get-FileHash -Algorithm SHA1 *.esd
